@@ -30,9 +30,11 @@ int	main(int argc, char **argv)
 	int	i;
 	int	x;
 	int	ret;
+	char	*tab_iter;
 
 	i = 1;
 	x = 1;
+	tab_iter = ft_strnew(argc);
 	if (tgetent(0, type_term) == ERR)
 		perror("tgetent");
 	bg = tgetstr("AB", NULL);
@@ -46,10 +48,7 @@ int	main(int argc, char **argv)
 	while (argv[i])
 	{
 		if (i == x)
-		{
 			ft_background_txt(bg, txt);
-				tputs(souligne, 1, ft_putchar);
-		}
 		else
 			tputs(reset, 1, ft_putchar);
 		printf("%s\n", argv[i++]);
@@ -59,34 +58,43 @@ int	main(int argc, char **argv)
 	lol.c_cc[VMIN] = 1;
 	lol.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &lol);
+	tab_iter = memset(tab_iter, '0', argc);
 	while ((ret = read(0, buf, 3)) > 0)
 	{
 		i = 1;
 		tputs(clean, 1, ft_putchar);
 		tputs(tgoto(cursor, 0, 0), 1, ft_putchar);
 		buf[ret + 1] = 0;
-		if (buf[2] == 66)
+		if (buf[0] == 27 && buf[1] == 91 && buf[2] == 66)
 			x++;
-		else if (buf[2] == 65)
+		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 65)
 			x--;
+		if (x == argc)
+			x = 1;
+		else if (x == 0)
+			x = argc - 1;
 		while (argv[i])
 		{
 			if (i == x)
 			{
 				ft_background_txt(bg, txt);
-				tputs(souligne, 1, ft_putchar);
+				if (buf[0] == 32)
+				{
+					if (tab_iter[i] == '0')
+						tab_iter[i] = '1';
+					else
+						tab_iter[i] = '0';
+				}
 			}
 			else
 				tputs(reset, 1, ft_putchar);
+			if (tab_iter[i] == '1')
+				tputs(souligne, 1, ft_putchar);
 			printf("%s\n", argv[i++]);
 		}
+		tputs(reset, 1, ft_putchar);
 		printf("\nbuf = %d %d %d\n", buf[0], buf[1], buf[2]);
 		bzero(buf, 3);
 	}
-	printf("ouloulouuuu\n");
-	printf("ouloulouuuu\n");
-//	tputs(cursor, 1, ft_putchar);
-//	tputs(tgoto(cursor, 0, 0), 1, ft_putchar);
-	printf("ouloulouuuu\n");
 	return (0);
 }
