@@ -65,8 +65,11 @@ int	main(int argc, char **argv)
 	lol.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &lol);
 	tab_iter = memset(tab_iter, '0', argc);
+	bzero(buf, 3);
 	while ((ret = read(0, buf, 3)) > 0)
 	{
+		if (buf[0] == 10)
+			break;
 		i = 1;
 		tputs(clean, 1, ft_putchar);
 		tputs(tgoto(cursor, 0, 0), 1, ft_putchar);
@@ -100,6 +103,13 @@ int	main(int argc, char **argv)
 		tputs(reset, 1, ft_putchar);
 //		printf("\nbuf = %d %d %d\n", buf[0], buf[1], buf[2]);
 		bzero(buf, 3);
+	}
+	i = 1;
+	while (argv[i])
+	{
+		if (tab_iter[i] == '1')
+			printf("%s\n", argv[i]);
+		i++;
 	}
 	return (0);
 }
