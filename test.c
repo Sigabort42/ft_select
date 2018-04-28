@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	char	*cursor;
 	char	*clean;
 	char	buf[3];
-	char	**av;
+//	char	**av;
 	struct termios lol;
 	int	i;
 	int	x;
@@ -34,12 +34,12 @@ int	main(int argc, char **argv)
 	char	*tab_iter;
 
 	i = 1;
-	x = 0;
-	av = (char**)malloc(sizeof(char*) * (argc + 1));
-	while (argv[i])
-		av[x++] = ft_strdup(argv[i++]);
-	i = 0;
-	x = 0;
+	x = 1;
+//	av = (char**)malloc(sizeof(char*) * (argc + 1));
+//	while (argv[i])
+//		av[x++] = ft_strdup(argv[i++]);
+//	i = 0;
+//	x = 0;
 	tab_iter = ft_strnew(argc);
 	if (tgetent(0, type_term) == ERR)
 		perror("tgetent");
@@ -51,13 +51,13 @@ int	main(int argc, char **argv)
 	clean = tgetstr("cl", NULL);
 	tputs(clean, 1, ft_putchar);
 	tputs(tgoto(cursor, 0, 0), 1, ft_putchar);
-	while (av[i])
+	while (argv[i])
 	{
 		if (i == x)
 			ft_background_txt(bg, txt);
 		else
 			tputs(reset, 1, ft_putchar);
-		printf("%s\n", av[i++]);
+		printf("%s\n", argv[i++]);
 	}
 	tcgetattr(0, &lol);
 	lol.c_lflag = ~(ICANON|ECHO);
@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 	tab_iter = memset(tab_iter, '0', argc);
 	while ((ret = read(0, buf, 3)) > 0)
 	{
-		i = 0;
+		i = 1;
 		tputs(clean, 1, ft_putchar);
 		tputs(tgoto(cursor, 0, 0), 1, ft_putchar);
 		buf[ret + 1] = 0;
@@ -75,11 +75,11 @@ int	main(int argc, char **argv)
 			x++;
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 65)
 			x--;
-		if (x == argc - 1)
-			x = 0;
-		else if (x == -1)
-			x = argc - 2;
-		while (av[i])
+		if (x == argc)
+			x = 1;
+		else if (x == 0)
+			x = argc - 1;
+		while (argv[i])
 		{
 			if (i == x)
 			{
@@ -92,11 +92,9 @@ int	main(int argc, char **argv)
 						tab_iter[i] = '0';
 				}
 			}
-			else
-				tputs(reset, 1, ft_putchar);
 			if (tab_iter[i] == '1')
 				tputs(souligne, 1, ft_putchar);
-			printf("%s\n", av[i++]);
+			printf("%s\n", argv[i++]);
 			tputs(reset, 1, ft_putchar);
 		}
 		tputs(reset, 1, ft_putchar);
