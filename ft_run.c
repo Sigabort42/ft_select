@@ -46,7 +46,10 @@ void		ft_run(t_env *env)
 	while (42)
 	{
 		if ((ret = read(0, env->tch, 3)) <= 0)
+		{
+			printf("tch = %d %d %d\n", env->tch[0], env->tch[1], env->tch[2]);
 			break;
+		}
 		if (env->tch[0] == 10)
 			break;
 		else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66)
@@ -62,6 +65,7 @@ void		ft_run(t_env *env)
 		ft_show(env);
 		tputs(env->rst, 1, ft_putchar);
 		ft_bzero(env->tch, 3);
+		printf("tch = %d %d %d\n", env->tch[0], env->tch[1], env->tch[2]);
 	}
 	ft_reset_term(env);
 }
