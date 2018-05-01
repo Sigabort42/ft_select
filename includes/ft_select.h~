@@ -38,6 +38,6 @@ void			ft_reset_term(t_env *env);
 void			ft_run(t_env *env);
 void			ft_first(t_env *env);
 void			ft_bgc_txt(t_env *env);
-void			ft_press_space(t_env *env, t_liste *liste);
+void			ft_press_space(t_env *env);
 
 #endif

@@ -48,7 +48,9 @@ void	ft_init_prog(t_env *env)
 	liste = env->first->next;
 	tputs(env->cln, 1, ft_putchar);
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
+	tputs(env->slg, 1, ft_putchar);
 	ft_putendl(env->first->name_node);
+	tputs(env->rst, 1, ft_putchar);
 	while (liste != env->first)
 	{
 		ft_putendl(liste->name_node);
