@@ -1,6 +1,6 @@
 #include "./includes/ft_select.h"
 
-void	ft_init_liste(t_env *env, char **argv)
+void		ft_init_liste(t_env *env, char **argv)
 {
 	t_liste *liste;
 	int     i;
@@ -19,7 +19,7 @@ void	ft_init_liste(t_env *env, char **argv)
 	liste->next = env->first;
 }
 
-void	ft_init_termcap(t_env *env)
+void		ft_init_termcap(t_env *env)
 {
 	env->type_term = getenv("TERM");
 	if (tgetent(0, env->type_term) == ERR)
@@ -35,13 +35,13 @@ void	ft_init_termcap(t_env *env)
 	env->txt = tgetstr("AF", 0);
 }
 
-void	ft_reset_term(t_env *env)
+void		ft_reset_term(t_env *env)
 {
 	env->tc.c_lflag = (ICANON|ECHO);
 	tcsetattr(0, 0, &env->tc);
 }
 
-void	ft_init_prog(t_env *env)
+void		ft_init_prog(t_env *env)
 {
 	t_liste *liste;
 

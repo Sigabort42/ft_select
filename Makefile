@@ -25,8 +25,8 @@ clean:
 	@make -C libft/ clean
 	@/bin/rm -rf $(OBJS)
 
-fclean:	clean
+fclean:		clean
 	@make -C libft/ fclean
 	@/bin/rm -rf $(NAME)
 
-re:	fclean all
+re:		fclean all

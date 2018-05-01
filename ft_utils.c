@@ -1,6 +1,6 @@
 #include "./includes/ft_select.h"
 
-void	ft_first(t_env *env)
+void		ft_first(t_env *env)
 {
 	if (env->csr_term == 0)
 	{
