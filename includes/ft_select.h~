@@ -30,7 +30,6 @@ typedef struct		s_env
 	struct termios	tc;
 	struct winsize	wsize;
 	struct s_liste	*first;
-	struct s_liste	*last;
 }			t_env;
 
 void			ft_init_liste(t_env *env, char **argv);

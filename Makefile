@@ -2,11 +2,12 @@ NAME	=	ft_select
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra #-g3 -fsanitize=address
 
 SRCS	=	ft_init.c \
 		ft_run.c \
 		ft_utils.c \
+		ft_liste.c \
 		main.c \
 
 OBJS	=	$(SRCS:.c=.o)

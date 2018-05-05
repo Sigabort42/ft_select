@@ -16,6 +16,7 @@ void		ft_init_liste(t_env *env, char **argv)
 		liste->name_node = argv[i++];
 		liste->act = 0;
 	}
+	env->last = liste;
 	liste->next = env->first;
 }
 

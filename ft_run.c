@@ -1,12 +1,6 @@
 #include "./includes/ft_select.h"
 
-void		ft_bgc_txt(t_env *env)
-{
-	tputs(tparm(env->bgc, COLOR_WHITE), 1, ft_putchar);
-	tputs(tparm(env->txt, COLOR_BLACK), 1, ft_putchar);
-}
-
-void		ft_press_space(t_env *env, t_liste *liste)
+static void	ft_press_space(t_env *env, t_liste *liste)
 {
 	if (env->tch[0] == 32)
 	{
@@ -55,6 +49,28 @@ static void	ft_show(t_env *env)
 	}
 }
 
+static void	ft_if_tch(t_env *env)
+{
+	if (env->tch[0] == 10 || (env->tch[0] == 27 && env->tch[1] == 0))
+	{
+		ft_reset_term(env);
+		exit(0);
+	}
+	else if (env->tch[0] == 127 && env->tch[1] == 0 && !env->first->next)
+	{
+		ft_reset_term(env);
+		exit(0);
+	}
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66)
+		env->csr_term++;
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65)
+		env->csr_term--;
+	if (env->csr_term >= env->nb_arg)
+		env->csr_term = 0;
+	else if (env->csr_term < 0)
+		env->csr_term = env->nb_arg - 1;
+}
+
 void		ft_run(t_env *env)
 {
 	int	ret;
@@ -64,19 +80,12 @@ void		ft_run(t_env *env)
 	{
 		if ((ret = read(0, env->tch, 3)) <= 0)
 			break;
-		if (env->tch[0] == 10)
-			break;
-		else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66)
-			env->csr_term++;
-		else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65)
-			env->csr_term--;
-		if (env->csr_term >= env->nb_arg)
-			env->csr_term = 0;
-		else if (env->csr_term < 0)
-			env->csr_term = env->nb_arg - 1;
+		ft_if_tch(env);
 		tputs(env->cln, 1, ft_putchar);
 		tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
+		ft_search_node(env, env->first);
 		ft_show(env);
+		printf("tch = %d %d %d\n", env->tch[0], env->tch[1], env->tch[2]);
 		tputs(env->rst, 1, ft_putchar);
 		ft_bzero(env->tch, 3);
 	}
