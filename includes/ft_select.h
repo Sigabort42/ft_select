@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:51:04 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/06 09:58:03 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/06 12:50:41 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ typedef struct		s_env
 	char			tch[3];
 	int				csr_term;
 	int				nb_arg;
-	unsigned int	size_word_max;
+	int				row;
+	int				col;
+	int				div;
+	int				size_word_max;
 	struct termios	tc;
 	struct winsize	wsize;
 	struct s_liste	*first;
@@ -56,6 +59,8 @@ void				ft_press_space(t_env *env, t_liste *liste);
 void				ft_bgc_txt(t_env *env);
 void				ft_search_node(t_env *env, t_liste *node);
 void				ft_press_delete_or_backs(t_env *env, t_liste *liste);
+void				ft_size_word_max(t_env *env);
+void				ft_show_column(t_env *env, char *name_node);
 int					ft_count_liste(t_liste *first);
 
 #endif

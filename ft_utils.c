@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:49 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/06 09:50:50 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/06 12:52:14 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,18 @@ void		ft_press_delete_or_backs(t_env *env, t_liste *liste)
 	ft_search_node(env, liste);
 	tputs(env->rst, 1, ft_putchar);
 	ft_bzero(env->tch, 3);
+}
+
+void		ft_size_word_max(t_env *env)
+{
+	t_liste	*liste;
+
+	liste = env->first->next;
+	env->size_word_max = ft_strlen(env->first->name_node);
+	while (liste != env->first)
+	{
+		if (env->size_word_max < (int)ft_strlen(liste->name_node))
+			env->size_word_max = ft_strlen(liste->name_node);
+		liste = liste->next;
+	}
 }
