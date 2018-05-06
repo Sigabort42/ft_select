@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:42 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/06 12:29:55 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/06 13:24:18 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	ft_show_selection(t_env *env)
 	t_liste	*liste;
 
 	liste = env->first->next;
+	tputs(env->cln, 1, ft_putchar);
+	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 	if (env->first->act)
 		ft_putendl(env->first->name_node);
 	while (liste != env->first)
