@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_liste.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/06 09:50:33 by elbenkri          #+#    #+#             */
+/*   Updated: 2018/05/06 09:54:51 by elbenkri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./includes/ft_select.h"
 
-void	ft_search_node(t_env *env, t_liste *node)
+void		ft_search_node(t_env *env, t_liste *node)
 {
 	t_liste	*search;
 
@@ -31,9 +43,9 @@ void	ft_search_node(t_env *env, t_liste *node)
 	}
 }
 
-int		ft_count_liste(t_liste *first)
+int			ft_count_liste(t_liste *first)
 {
-	int	i;
+	int		i;
 	t_liste *liste;
 
 	i = 0;

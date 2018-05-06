@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/06 09:50:20 by elbenkri          #+#    #+#             */
+/*   Updated: 2018/05/06 09:52:42 by elbenkri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./includes/ft_select.h"
 
 void		ft_init_liste(t_env *env, char **argv)
 {
 	t_liste *liste;
-	int     i;
+	int		i;
 
 	i = 2;
 	liste = (t_liste*)malloc(sizeof(t_liste));
@@ -38,7 +50,7 @@ void		ft_init_termcap(t_env *env)
 
 void		ft_reset_term(t_env *env)
 {
-	env->tc.c_lflag = (ICANON|ECHO);
+	env->tc.c_lflag = (ICANON | ECHO);
 	tcsetattr(0, 0, &env->tc);
 }
 
@@ -58,7 +70,7 @@ void		ft_init_prog(t_env *env)
 		liste = liste->next;
 	}
 	tcgetattr(0, &env->tc);
-	env->tc.c_lflag = ~(ICANON|ECHO);
+	env->tc.c_lflag = ~(ICANON | ECHO);
 	env->tc.c_cc[VMIN] = 0;
 	env->tc.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &env->tc);

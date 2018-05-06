@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_run.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/06 09:50:42 by elbenkri          #+#    #+#             */
+/*   Updated: 2018/05/06 09:56:03 by elbenkri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./includes/ft_select.h"
 
 static void	ft_show_selection(t_env *env)
@@ -15,6 +27,17 @@ static void	ft_show_selection(t_env *env)
 	}
 }
 
+static void	ft_show2(t_env *env, t_liste **liste)
+{
+	if ((*liste)->act)
+		ft_bgc_txt(env);
+	if (*liste != env->first)
+	{
+		ft_putendl((*liste)->name_node);
+		*liste = (*liste)->next;
+	}
+}
+
 static void	ft_show(t_env *env)
 {
 	t_liste	*liste;
@@ -25,7 +48,6 @@ static void	ft_show(t_env *env)
 	liste = env->first->next;
 	while (liste != env->first)
 	{
-//		printf("csr = %d i = %d nb = %d\n", env->csr_term, i, env->nb_arg);
 		if (env->csr_term == i++)
 		{
 			if (env->tch[0] == 127)
@@ -37,13 +59,7 @@ static void	ft_show(t_env *env)
 			tputs(env->slg, 1, ft_putchar);
 			ft_press_space(env, liste);
 		}
-		if (liste->act)
-			ft_bgc_txt(env);
-		if (liste != env->first)
-		{
-			ft_putendl(liste->name_node);
-			liste = liste->next;
-		}
+		ft_show2(env, &liste);
 		tputs(env->rst, 1, ft_putchar);
 	}
 }
@@ -75,7 +91,7 @@ void		ft_run(t_env *env)
 	{
 		ioctl(0, TIOCGWINSZ, &env->wsize);
 		if ((ret = read(0, env->tch, 3)) < 0)
-			break;
+			break ;
 		if (ret)
 		{
 //			printf("row = %d col = %d %d\n", env->wsize.ws_row, env->wsize.ws_col, ttyslot());
