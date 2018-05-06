@@ -73,16 +73,20 @@ void		ft_run(t_env *env)
 	env->csr_term = 0;
 	while (42)
 	{
-		printf("csr = %d nb = %d\n", env->csr_term, env->nb_arg);
-		if ((ret = read(0, env->tch, 3)) <= 0)
-			break;
-		printf("tch = %d %d %d\n", env->tch[0], env->tch[1], env->tch[2]);
+//		printf("row = %d col = %d %d\n", env->wsize.ws_row, env->wsize.ws_col, ttyslot());
+//		printf("csr = %d nb = %d\n", env->csr_term, env->nb_arg);
+		if ((ioctl(0, TIOCGWINSZ, &env->wsize) >= 0) &&  (ret = read(0, env->tch, 3)) <= 0)
+			;//break;
+		if (ret)
+		{
+//		printf("tch = %d %d %d\n", env->tch[0], env->tch[1], env->tch[2]);
 		ft_if_tch(env);
 		tputs(env->cln, 1, ft_putchar);
 		tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 		ft_show(env);
 		tputs(env->rst, 1, ft_putchar);
 		ft_bzero(env->tch, 3);
+		}
 	}
 	ft_show_selection(env);
 	ft_reset_term(env);
