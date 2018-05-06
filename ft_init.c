@@ -62,4 +62,5 @@ void		ft_init_prog(t_env *env)
 	env->tc.c_cc[VMIN] = 1;
 	env->tc.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &env->tc);
+	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 }

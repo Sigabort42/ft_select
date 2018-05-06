@@ -43,7 +43,6 @@ void			ft_bgc_txt(t_env *env);
 void			ft_press_space(t_env *env, t_liste *liste);
 void			ft_bgc_txt(t_env *env);
 void			ft_search_node(t_env *env, t_liste *node);
-void			ft_press_delete_or_backs(t_env *env, t_liste *liste);
 int				ft_count_liste(t_liste *first);
 
 #endif

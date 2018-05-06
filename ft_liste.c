@@ -23,13 +23,15 @@ void	ft_search_node(t_env *env, t_liste *node)
 		search = search->next;
 	if (search->next == node)
 	{
+		if (env->last == node)
+			env->last = search;
 		search->next = node->next;
 		free(node);
 		node = 0;
 	}
 }
 
-int	ft_count_liste(t_liste *first)
+int		ft_count_liste(t_liste *first)
 {
 	int	i;
 	t_liste *liste;
