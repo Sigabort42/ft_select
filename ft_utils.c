@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:49 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/06 12:52:14 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/07 15:21:47 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		ft_first(t_env *env)
 		tputs(env->slg, 1, ft_putchar);
 		ft_press_space(env, env->first);
 	}
-	ft_putendl(env->first->name_node);
+	ft_show_column(env, env->first->name_node);
 	tputs(env->rst, 1, ft_putchar);
 }
 

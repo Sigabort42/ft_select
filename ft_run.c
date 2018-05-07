@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:42 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/06 13:24:18 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/07 13:28:18 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void	ft_show2(t_env *env, t_liste **liste)
 	if (*liste != env->first)
 	{
 		ft_show_column(env, (*liste)->name_node);
-//		ft_putendl((*liste)->name_node);
 		*liste = (*liste)->next;
 	}
 }
@@ -97,11 +96,6 @@ void		ft_run(t_env *env)
 			break ;
 		if (ret)
 		{
-			printf("word_max = %d\n", env->size_word_max);
-			printf("row = %d col = %d %d\n", env->wsize.ws_row, env->wsize.ws_col, ttyslot());
-//			printf("csr = %d nb = %d\n", env->csr_term, env->nb_arg);
-//			sleep(1);
-//		printf("tch = %d %d %d\n", env->tch[0], env->tch[1], env->tch[2]);
 			ft_if_tch(env);
 			tputs(env->cln, 1, ft_putchar);
 			tputs(tgoto(env->csr, env->row, env->col), 1, ft_putchar);

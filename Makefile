@@ -6,7 +6,7 @@
 #    By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/06 09:50:26 by elbenkri          #+#    #+#              #
-#    Updated: 2018/05/06 12:25:03 by elbenkri         ###   ########.fr        #
+#    Updated: 2018/05/07 12:18:00 by elbenkri         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,7 +14,7 @@ NAME	=	ft_select
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra #-g3 -fsanitize=address
 
 SRCS	=	ft_init.c \
 		ft_run.c \

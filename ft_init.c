@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:20 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/06 09:52:42 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/07 15:25:14 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ void		ft_init_prog(t_env *env)
 	tputs(env->cln, 1, ft_putchar);
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 	tputs(env->slg, 1, ft_putchar);
-	ft_putendl(env->first->name_node);
+	ft_show_column(env, env->first->name_node);
+//	ft_putendl(env->first->name_node);
 	tputs(env->rst, 1, ft_putchar);
 	while (liste != env->first)
 	{
-		ft_putendl(liste->name_node);
+		ft_show_column(env, liste->name_node);
 		liste = liste->next;
 	}
 	tcgetattr(0, &env->tc);
@@ -75,4 +76,6 @@ void		ft_init_prog(t_env *env)
 	env->tc.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &env->tc);
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
+	env->row = 0;
+	env->col = 0;
 }
