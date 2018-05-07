@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:20 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/07 15:25:14 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/07 15:36:40 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void		ft_init_prog(t_env *env)
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 	tputs(env->slg, 1, ft_putchar);
 	ft_show_column(env, env->first->name_node);
-//	ft_putendl(env->first->name_node);
 	tputs(env->rst, 1, ft_putchar);
 	while (liste != env->first)
 	{

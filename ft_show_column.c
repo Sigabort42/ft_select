@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:14:46 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/07 13:36:57 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/07 16:01:57 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void		ft_show_column(t_env *env, char *name_node)
 
 	env->div = 3;
 	res = env->wsize.ws_col - env->size_word_max - 5;
-	if (res < 0)
+	if (res < 0 || env->wsize.ws_row - env->size_word_max - 2 < 0)
 	{
-		ft_putendl("the window size is shortly");
+//		ft_putendl("the window size is shortly");
 		return ;
 	}
 	if (res <= env->wsize.ws_col / 2)
@@ -50,6 +50,4 @@ void		ft_show_column(t_env *env, char *name_node)
 	while (res <= env->wsize.ws_col / env->div)
 		env->div++;
 	ft_show_column2(env, name_node);
-//	printf("ici = %d %d %d\n", res, env->wsize.ws_col / env->div, env->nb_arg / env->div);
-//	sleep(1);
 }
