@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:20 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/07 15:36:40 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/07 17:26:22 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		ft_init_prog(t_env *env)
 	}
 	tcgetattr(0, &env->tc);
 	env->tc.c_lflag = ~(ICANON | ECHO);
-	env->tc.c_cc[VMIN] = 0;
+	env->tc.c_cc[VMIN] = 1;
 	env->tc.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &env->tc);
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);

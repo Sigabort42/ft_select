@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:42 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/07 16:07:41 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/07 17:27:37 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	ft_show_selection(t_env *env)
 		}
 		liste = liste->next;
 	}
+	ft_putstr("\b\n");
 }
 
 static void	ft_show2(t_env *env, t_liste **liste)
@@ -81,6 +82,10 @@ static void	ft_if_tch(t_env *env)
 		env->csr_term++;
 	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65)
 		env->csr_term--;
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 67)
+		;
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 68)
+		;
 	if (env->csr_term > env->nb_arg)
 		env->csr_term = 0;
 	else if (env->csr_term < 0)
