@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:42 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/07 15:45:19 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/07 16:07:41 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static void	ft_show_selection(t_env *env)
 	while (liste != env->first)
 	{
 		if (liste->act)
-			ft_putendl(liste->name_node);
+		{
+			ft_putstr(liste->name_node);
+			ft_putstr(" ");
+		}
 		liste = liste->next;
 	}
 }
