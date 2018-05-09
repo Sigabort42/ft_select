@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:57 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/07 13:48:38 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/09 13:48:56 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	env.nb_arg = argc - 2;
 	ft_init_liste(&env, argv);
 	ft_init_termcap(&env);
-	ft_size_word_max(&env);
+//	ft_size_word_max(&env);
 	ioctl(0, TIOCGWINSZ, &env.wsize);
 	ft_init_prog(&env);
 	ft_bzero(env.tch, 3);
