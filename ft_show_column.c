@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:14:46 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/09 13:50:10 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/09 13:53:10 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void		ft_show_column(t_env *env, char *name_node)
 	}
 	while ((res = res * env->div) < env->wsize.ws_col - 20)
 		env->div++;
+//	env->div--;
 //	printf("lolol col = %d row = %d res = %d div = %d\n", env->wsize.ws_col, env->wsize.ws_row, res, env->div);
 //	sleep(1);
 	ft_show_column2(env, name_node);
