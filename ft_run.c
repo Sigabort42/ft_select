@@ -109,7 +109,6 @@ void		ft_run(t_env *env)
 		{
 			env->row = 0;
 			env->col = 0;
-//			env->div = 3;
 			ft_if_tch(env);
 			tputs(env->cln, 1, ft_putchar);
 			tputs(tgoto(env->csr, env->row, env->col), 1, ft_putchar);
