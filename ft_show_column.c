@@ -14,8 +14,6 @@
 
 void		ft_show_column2(t_env *env, char *name_node)
 {
-//	printf("ici = %d %d\n", env->nb_arg, env->div);
-//	sleep(1);
 	if (env->nb_arg >= env->div && env->col < env->nb_arg / env->div)
 	{
 		tputs(tgoto(env->csr, env->row, env->col), 1, ft_putchar);
@@ -52,8 +50,5 @@ void		ft_show_column(t_env *env, char *name_node)
 	}
 	while (res * env->div < env->wsize.ws_col - 20)
 		env->div++;
-//	env->div--;
-//	printf("lolol col = %d row = %d res = %d div = %d\n", env->wsize.ws_col, env->wsize.ws_row, res, env->div);
-//	sleep(1);
 	ft_show_column2(env, name_node);
 }

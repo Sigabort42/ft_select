@@ -41,10 +41,19 @@ void		ft_press_space(t_env *env, t_liste *liste)
 	if (env->tch[0] == 32)
 	{
 		if (liste->act)
+		{
+			tputs(env->slg, 1, ft_putchar);
 			liste->act = 0;
+		}
 		else
+		{
 			liste->act = 1;
+			env->csr_term++;
+			ft_bzero(env->tch, 3);
+		}
 	}
+	else
+		tputs(env->slg, 1, ft_putchar);
 }
 
 void		ft_press_delete_or_backs(t_env *env, t_liste *liste)

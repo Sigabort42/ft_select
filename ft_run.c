@@ -65,7 +65,6 @@ static void	ft_show(t_env *env)
 				ft_press_delete_or_backs(env, liste);
 				liste = liste->next;
 			}
-			tputs(env->slg, 1, ft_putchar);
 			ft_press_space(env, liste);
 		}
 		ft_show2(env, &liste);
