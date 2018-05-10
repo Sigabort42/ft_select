@@ -31,24 +31,18 @@ void		ft_show_column2(t_env *env, char *name_node)
 
 void		ft_show_column(t_env *env, char *name_node)
 {
-	int		res;
-
-	ft_size_word_max(env);
-	env->div = 3;
-	res = env->wsize.ws_col - (env->wsize.ws_col - env->size_word_max);
-	if (res < 0  || env->wsize.ws_col - env->size_word_max - 2 < 0)
+	if (env->res < 0  || env->wsize.ws_col - env->size_word_max - 2 < 0 ||
+	env->wsize.ws_row - env->nb_arg  - 2 < 0)
 	{
 //		ft_putendl("the window size is shortly");
 		return ;
 	}
-	if (res >= env->wsize.ws_col / 2)
+	if (env->res >= env->wsize.ws_col / 2)
 	{
 		tputs(tgoto(env->csr, env->row, env->col), 1, ft_putchar);
 		ft_putendl(name_node);
 		env->col++;
 		return ;
 	}
-	while (res * env->div < env->wsize.ws_col - 20)
-		env->div++;
 	ft_show_column2(env, name_node);
 }

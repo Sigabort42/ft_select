@@ -78,3 +78,11 @@ void		ft_init_prog(t_env *env)
 	env->row = 0;
 	env->col = 0;
 }
+
+void		ft_init_calc_write(t_env *env)
+{
+	env->div = 1;
+	env->res = env->wsize.ws_col - (env->wsize.ws_col - env->size_word_max);
+	while (env->res * env->div < env->wsize.ws_col - 20)
+		env->div++;
+}

@@ -80,14 +80,14 @@ static void	ft_if_tch(t_env *env)
 		ft_show_selection(env);
 		exit(0);
 	}
-	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66)
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66) //bottom
 		env->csr_term++;
-	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65)
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65) //top
 		env->csr_term--;
-	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 67)
-		;
-	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 68)
-		;
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 67) //right
+		env->csr_term += env->nb_arg / env->div + 1;
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 68) //left
+		env->csr_term -= env->nb_arg / env->div + 1;
 	if (env->csr_term > env->nb_arg)
 		env->csr_term = 0;
 	else if (env->csr_term < 0)
@@ -104,6 +104,7 @@ void		ft_run(t_env *env)
 		ioctl(0, TIOCGWINSZ, &env->wsize);
 		if ((ret = read(0, env->tch, 3)) < 0)
 			break ;
+		ft_init_calc_write(env);
 		if (ret)
 		{
 			env->row = 0;

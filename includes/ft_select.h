@@ -42,6 +42,7 @@ typedef struct		s_env
 	int				col;
 	int				div;
 	int				size_word_max;
+	int				res;
 	struct termios	tc;
 	struct winsize	wsize;
 	struct s_liste	*first;
@@ -61,6 +62,7 @@ void				ft_search_node(t_env *env, t_liste *node);
 void				ft_press_delete_or_backs(t_env *env, t_liste *liste);
 void				ft_size_word_max(t_env *env);
 void				ft_show_column(t_env *env, char *name_node);
+void				ft_init_calc_write(t_env *env);
 int					ft_count_liste(t_liste *first);
 
 #endif

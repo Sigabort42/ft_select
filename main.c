@@ -26,8 +26,9 @@ int	main(int argc, char **argv)
 	env.nb_arg = argc - 2;
 	ft_init_liste(&env, argv);
 	ft_init_termcap(&env);
-//	ft_size_word_max(&env);
+	ft_size_word_max(&env);
 	ioctl(0, TIOCGWINSZ, &env.wsize);
+	ft_init_calc_write(&env);
 	ft_init_prog(&env);
 	ft_bzero(env.tch, 3);
 	ft_run(&env);
