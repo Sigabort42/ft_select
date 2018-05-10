@@ -37,7 +37,7 @@ void		ft_init_termcap(t_env *env)
 	env->type_term = getenv("TERM");
 	if (tgetent(0, env->type_term) == ERR)
 	{
-		perror("tgetent");
+		ft_putendl("Probleme d'environnement");
 		exit(1);
 	}
 	env->slg = tgetstr("us", 0);
