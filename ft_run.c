@@ -47,7 +47,7 @@ static void	ft_show2(t_env *env, t_liste **liste)
 	}
 }
 
-static void	ft_show(t_env *env)
+void		ft_show(t_env *env)
 {
 	t_liste	*liste;
 	int		i;

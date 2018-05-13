@@ -63,6 +63,7 @@ void				ft_press_delete_or_backs(t_env *env, t_liste *liste);
 void				ft_size_word_max(t_env *env);
 void				ft_show_column(t_env *env, char *name_node);
 void				ft_init_calc_write(t_env *env);
+void				ft_show(t_env *env);
 int					ft_count_liste(t_liste *first);
 
 #endif
