@@ -19,13 +19,10 @@ void		ft_first(t_env *env)
 		ft_press_delete_or_backs(env, env->first);
 		env->nb_arg--;
 	}
+	if (env->csr_term == 0)
+		ft_press_space(env, env->first);
 	if (env->first->act)
 		ft_bgc_txt(env);
-	if (env->csr_term == 0)
-	{
-		tputs(env->slg, 1, ft_putchar);
-		ft_press_space(env, env->first);
-	}
 	ft_show_column(env, env->first->name_node);
 	tputs(env->rst, 1, ft_putchar);
 }

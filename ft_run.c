@@ -21,7 +21,7 @@ static void	ft_show_selection(t_env *env)
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 	if (env->first->act)
 	{
-		ft_putstr(liste->name_node);
+		ft_putstr(env->first->name_node);
 		ft_putstr(" ");
 	}
 	while (liste != env->first)
@@ -98,7 +98,6 @@ void		ft_run(t_env *env)
 {
 	int	ret;
 
-	env->csr_term = 0;
 	while (42)
 	{
 		ioctl(0, TIOCGWINSZ, &env->wsize);

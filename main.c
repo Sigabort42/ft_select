@@ -28,9 +28,53 @@ void	ft_signal_window(int sig)
 	}
 }
 
+void	ft_signal_cont(int sig)
+{
+	if (sig == SIGCONT)
+	{
+		env2->row = 0;
+		env2->col = 0;
+		ioctl(0, TIOCGWINSZ, env2->wsize);
+		ft_init_calc_write(env2);
+		ft_init_termcap(env2);
+		ft_init_prog(env2);
+		ft_show(env2);
+		ft_run(env2);
+	}
+}
+
+void	ft_signal_kill(int sig)
+{
+	(void)sig;
+	ft_reset_term(env2);
+	exit(1);
+}
+
 void	ft_signal()
 {
 	if (signal(SIGWINCH, ft_signal_window) == SIG_ERR)
+		;
+	if (signal(SIGCONT, ft_signal_cont) == SIG_ERR)
+		;
+	if (signal(SIGINT, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGFPE, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGSEGV, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGSEGV, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGABRT, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGPIPE, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGALRM, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGTERM, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGUSR1, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGUSR2, ft_signal_kill) == SIG_ERR)
 		;
 }
 
@@ -45,6 +89,7 @@ int	main(int argc, char **argv)
 	}
 	env.row = 0;
 	env.col = 0;
+	env.csr_term = 0;
 	env2 = &env;
 	env.nb_arg = argc - 2;
 	ft_signal();

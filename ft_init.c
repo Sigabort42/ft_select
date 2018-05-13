@@ -20,6 +20,7 @@ void		ft_init_liste(t_env *env, char **argv)
 	i = 2;
 	liste = (t_liste*)malloc(sizeof(t_liste));
 	liste->name_node = argv[1];
+	liste->act = 0;
 	env->first = liste;
 	while (argv[i])
 	{
@@ -56,19 +57,9 @@ void		ft_reset_term(t_env *env)
 
 void		ft_init_prog(t_env *env)
 {
-	t_liste *liste;
-
-	liste = env->first->next;
 	tputs(env->cln, 1, ft_putchar);
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
-	tputs(env->slg, 1, ft_putchar);
-	ft_show_column(env, env->first->name_node);
-	tputs(env->rst, 1, ft_putchar);
-	while (liste != env->first)
-	{
-		ft_show_column(env, liste->name_node);
-		liste = liste->next;
-	}
+	ft_show(env);
 	tcgetattr(0, &env->tc);
 	env->tc.c_lflag = ~(ICANON | ECHO);
 	env->tc.c_cc[VMIN] = 0;
