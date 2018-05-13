@@ -24,7 +24,6 @@ typedef struct		s_liste
 {
 	char			*name_node;
 	int				act;
-	int				color;
 	struct s_liste	*next;
 }					t_liste;
 
