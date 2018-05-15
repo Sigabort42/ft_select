@@ -14,7 +14,7 @@ NAME	=	ft_select
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Werror -Wextra #-g3 -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra
 
 SRCS	=	ft_init.c \
 		ft_run.c \
@@ -34,6 +34,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 	@make -C libft/
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LIBTERM) -o $(NAME)
+	@echo "\033[H\033[2J\033[32;5m[OK...]\033[0m"
 
 clean:
 	@make -C libft/ clean
@@ -42,5 +43,6 @@ clean:
 fclean:		clean
 	@make -C libft/ fclean
 	@/bin/rm -rf $(NAME)
+	@echo "\033[H\033[2J\033[32;5m[OK...]\033[0m"
 
 re:		fclean all
