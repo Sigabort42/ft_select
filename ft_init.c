@@ -38,8 +38,12 @@ void		ft_init_termcap(t_env *env)
 	env->type_term = getenv("TERM");
 	if (tgetent(0, env->type_term) == ERR)
 	{
-		ft_putendl("Probleme d'environnement");
-		exit(1);
+		env->type_term = ft_strdup("xterm-256color");
+		if (tgetent(0, env->type_term) == ERR)
+		{
+			ft_putendl("Probleme d'environnement");
+			exit(1);
+		}
 	}
 	env->slg = tgetstr("us", 0);
 	env->csr = tgetstr("cm", 0);
