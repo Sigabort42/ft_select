@@ -19,21 +19,21 @@ static void			ft_color_file(char *av)
 	if (stat(av, &s) == -1)
 		ft_putendl(av);
 	else if (S_ISLNK(s.st_mode))
-		ft_printf("{magenta}%s{eoc}\n", av);
+		ft_printf("{magenta}%s{eoc}{fd}2\n", av);
 	else if (S_ISDIR(s.st_mode))
-		ft_printf("{cyan}%s{eoc}\n", av);
+		ft_printf("{cyan}%s{eoc}{fd}2\n", av);
 	else if (S_ISCHR(s.st_mode))
-		ft_printf("{green}%s{eoc}\n", av);
+		ft_printf("{green}%s{eoc}{fd}2\n", av);
 	else if (S_ISBLK(s.st_mode))
-		ft_printf("{blue}%s{eoc}\n", av);
+		ft_printf("{blue}%s{eoc}{fd}2\n", av);
 	else if (S_ISFIFO(s.st_mode))
-		ft_printf("{blue}%s{eoc}\n", av);
+		ft_printf("{blue}%s{eoc}{fd}2\n", av);
 	else if (S_ISSOCK(s.st_mode))
-		ft_printf("{yellow}%s{eoc}\n", av);
+		ft_printf("{yellow}%s{eoc}{fd}2\n", av);
 	else if (s.st_mode & S_IXUSR)
-		ft_printf("{red}%s{eoc}\n", av);
+		ft_printf("{red}%s{eoc}{fd}2\n", av);
 	else
-		ft_putendl(av);
+		ft_putendl_fd(av, 2);
 }
 
 void				ft_show_column2(t_env *env, char *name_node)
