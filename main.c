@@ -6,15 +6,15 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:57 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/09 13:48:56 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/22 14:17:03 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/ft_select.h"
 
-t_env *env2;
+t_env		*env2;
 
-void	ft_signal_window(int sig)
+void		ft_signal_window(int sig)
 {
 	if (sig == SIGWINCH)
 	{
@@ -28,7 +28,7 @@ void	ft_signal_window(int sig)
 	}
 }
 
-void	ft_signal_cont(int sig)
+void		ft_signal_cont(int sig)
 {
 	if (sig == SIGCONT)
 	{
@@ -43,14 +43,14 @@ void	ft_signal_cont(int sig)
 	}
 }
 
-void	ft_signal_kill(int sig)
+void		ft_signal_kill(int sig)
 {
 	(void)sig;
 	ft_reset_term(env2);
 	exit(1);
 }
 
-void	ft_signal()
+void		ft_signal(void)
 {
 	if (signal(SIGWINCH, ft_signal_window) == SIG_ERR)
 		;
@@ -78,7 +78,7 @@ void	ft_signal()
 		;
 }
 
-int	main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_env	env;
 

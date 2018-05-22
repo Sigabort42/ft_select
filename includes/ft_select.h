@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:51:04 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/06 12:50:41 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/22 14:32:28 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <termios.h>
 # include <sys/ioctl.h>
 # include <sys/stat.h>
-#include <stdio.h>
 
 typedef struct		s_liste
 {
