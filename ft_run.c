@@ -58,9 +58,7 @@ void		ft_show(t_env *env)
 	while (liste != env->first)
 	{
 		if (env->csr_term == i++)
-		{
 			ft_press_space(env, liste);
-		}
 		ft_show2(env, &liste);
 		tputs(env->rst, 1, ft_putchar);
 	}

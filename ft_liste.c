@@ -12,6 +12,17 @@
 
 #include "./includes/ft_select.h"
 
+static void		ft_exit_prog(t_env *env)
+{
+	if (!ft_count_liste(env->first))
+	{
+		ft_reset_term(env);
+		tputs(env->cln, 1, ft_putchar);
+		tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
+		exit(1);
+	}
+}
+
 void		ft_search_node(t_env *env, t_liste *node)
 {
 	t_liste	*search;
@@ -23,11 +34,7 @@ void		ft_search_node(t_env *env, t_liste *node)
 		env->first = 0;
 		env->first = search;
 		env->last->next = search;
-		if (!ft_count_liste(env->first))
-		{
-			ft_reset_term(env);
-			exit(1);
-		}
+		ft_exit_prog(env);
 		return ;
 	}
 	while (search->next && search->next != node)

@@ -61,6 +61,7 @@ void		ft_press_delete_or_backs(t_env *env, t_liste *liste)
 	if (env->first == env->last)
 	{
 		ft_reset_term(env);
+		tputs(env->cln, 1, ft_putchar);
 		exit(0);
 	}
 	while (i < env->csr_term)
