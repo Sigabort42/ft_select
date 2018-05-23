@@ -55,10 +55,18 @@ void		ft_press_space(t_env *env, t_liste *liste)
 
 void		ft_press_delete_or_backs(t_env *env, t_liste *liste)
 {
+	int	i;
+
+	i = 0;
 	if (env->first == env->last)
 	{
 		ft_reset_term(env);
 		exit(0);
+	}
+	while (i < env->csr_term)
+	{
+		liste = liste->next;
+		i++;
 	}
 	if (env->csr_term < 0)
 		env->csr_term = 0;

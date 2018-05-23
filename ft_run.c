@@ -59,12 +59,6 @@ void		ft_show(t_env *env)
 	{
 		if (env->csr_term == i++)
 		{
-			if (env->tch[0] == 127)
-			{
-				env->nb_arg--;
-				ft_press_delete_or_backs(env, liste);
-				liste = liste->next;
-			}
 			ft_press_space(env, liste);
 		}
 		ft_show2(env, &liste);
@@ -80,9 +74,11 @@ static void	ft_if_tch(t_env *env)
 		ft_show_selection(env);
 		exit(0);
 	}
-	else if (env->csr_term == ft_count_liste(env->first) - 1 && env->tch[0]
-	== 127)
-		env->csr_term--;
+	else if (env->tch[0] == 127)
+	{
+		env->nb_arg--;
+		ft_press_delete_or_backs(env, env->first);
+	}
 	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66) //bottom
 		env->csr_term++;
 	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65) //top
