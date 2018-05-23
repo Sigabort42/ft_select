@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:33 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/06 09:54:51 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/23 17:12:28 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void		ft_search_node(t_env *env, t_liste *node)
 		env->last->next = search;
 		if (!ft_count_liste(env->first))
 		{
-			ft_putendl("lolololol");
 			ft_reset_term(env);
 			exit(1);
 		}
@@ -50,6 +49,8 @@ int			ft_count_liste(t_liste *first)
 
 	i = 0;
 	liste = first->next;
+	if (first)
+		i++;
 	while (liste != first)
 	{
 		i++;
