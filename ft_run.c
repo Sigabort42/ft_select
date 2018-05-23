@@ -80,6 +80,9 @@ static void	ft_if_tch(t_env *env)
 		ft_show_selection(env);
 		exit(0);
 	}
+	else if (env->csr_term == ft_count_liste(env->first) - 1 && env->tch[0]
+	== 127)
+		env->csr_term--;
 	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66) //bottom
 		env->csr_term++;
 	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65) //top
