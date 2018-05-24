@@ -21,19 +21,19 @@ static void	ft_show_selection(t_env *env)
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 	if (env->first->act)
 	{
-		ft_putstr(env->first->name_node);
-		ft_putstr(" ");
+		ft_putstr_fd(env->first->name_node, 2);
+		ft_putstr_fd(" ", 2);
 	}
 	while (liste != env->first)
 	{
 		if (liste->act)
 		{
-			ft_putstr(liste->name_node);
-			ft_putstr(" ");
+			ft_putstr_fd(liste->name_node, 2);
+			ft_putstr_fd(" ", 2);
 		}
 		liste = liste->next;
 	}
-	ft_putstr("\b\n");
+	ft_putstr_fd("\b\n", 2);
 }
 
 static void	ft_show2(t_env *env, t_liste **liste)
@@ -107,7 +107,7 @@ void		ft_run(t_env *env)
 			env->col = 0;
 			ft_if_tch(env);
 			tputs(env->cln, 1, ft_putchar);
-			tputs(tgoto(env->csr, env->row, env->col), 1, ft_putchar);
+			tputs(tgoto(env->csr, env->row, env->col), 2, ft_putchar);
 			ft_show(env);
 			tputs(env->rst, 1, ft_putchar);
 			ft_bzero(env->tch, 3);

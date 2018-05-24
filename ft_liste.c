@@ -45,7 +45,7 @@ void		ft_search_node(t_env *env, t_liste *node)
 			env->last = search;
 		search->next = node->next;
 		free(node);
-		node = 0;		
+		node = 0;
 	}
 }
 
