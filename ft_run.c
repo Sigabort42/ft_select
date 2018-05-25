@@ -17,8 +17,6 @@ static void	ft_show_selection(t_env *env)
 	t_liste	*liste;
 
 	liste = env->first->next;
-	tputs(env->cln, 1, ft_putchar);
-	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 	if (env->first->act)
 	{
 		ft_putstr_fd(env->first->name_node, 1);

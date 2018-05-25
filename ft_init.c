@@ -51,11 +51,15 @@ void		ft_init_termcap(t_env *env)
 	env->rst = tgetstr("me", 0);
 	env->bgc = tgetstr("AB", 0);
 	env->txt = tgetstr("AF", 0);
+	tputs(tgetstr("ti", NULL), 1, ft_putchar);
+	tputs(tgetstr("vi", NULL), 1, ft_putchar);
 }
 
 void		ft_reset_term(t_env *env)
 {
 	env->tc.c_lflag = (ICANON | ECHO);
+	tputs(tgetstr("te", NULL), 1, ft_putchar);
+	tputs(tgetstr("ve", NULL), 1, ft_putchar);
 	tcsetattr(0, 0, &env->tc);
 }
 
@@ -65,7 +69,7 @@ void		ft_init_prog(t_env *env)
 	tputs(tgoto(env->csr, 0, 0), 1, ft_putchar);
 	ft_show(env);
 	tcgetattr(0, &env->tc);
-	env->tc.c_lflag = ~(ICANON | ECHO);
+	env->tc.c_lflag &= ~(ICANON | ECHO);
 	env->tc.c_cc[VMIN] = 0;
 	env->tc.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &env->tc);

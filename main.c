@@ -14,7 +14,7 @@
 
 t_env		*env2;
 
-void		ft_signal_window(int sig)
+static void	ft_signal_window(int sig)
 {
 	if (sig == SIGWINCH)
 	{
@@ -28,7 +28,7 @@ void		ft_signal_window(int sig)
 	}
 }
 
-void		ft_signal_cont(int sig)
+static void	ft_signal_cont(int sig)
 {
 	if (sig == SIGCONT)
 	{
@@ -43,14 +43,14 @@ void		ft_signal_cont(int sig)
 	}
 }
 
-void		ft_signal_kill(int sig)
+static void	ft_signal_kill(int sig)
 {
 	(void)sig;
 	ft_reset_term(env2);
 	exit(1);
 }
 
-void		ft_signal(void)
+static void	ft_signal(void)
 {
 	if (signal(SIGWINCH, ft_signal_window) == SIG_ERR)
 		;
@@ -62,8 +62,6 @@ void		ft_signal(void)
 		;
 	if (signal(SIGSEGV, ft_signal_kill) == SIG_ERR)
 		;
-	if (signal(SIGSEGV, ft_signal_kill) == SIG_ERR)
-		;
 	if (signal(SIGABRT, ft_signal_kill) == SIG_ERR)
 		;
 	if (signal(SIGPIPE, ft_signal_kill) == SIG_ERR)
@@ -72,10 +70,10 @@ void		ft_signal(void)
 		;
 	if (signal(SIGTERM, ft_signal_kill) == SIG_ERR)
 		;
-//	if (signal(SIGUSR1, ft_signal_kill) == SIG_ERR)
-//		;
-//	if (signal(SIGUSR2, ft_signal_kill) == SIG_ERR)
-//		;
+	if (signal(SIGUSR1, ft_signal_kill) == SIG_ERR)
+		;
+	if (signal(SIGUSR2, ft_signal_kill) == SIG_ERR)
+		;
 }
 
 int			main(int argc, char **argv)
