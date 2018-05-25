@@ -69,7 +69,8 @@ static void	ft_if_tch(t_env *env)
 	if (env->tch[0] == 10 || (env->tch[0] == 27 && env->tch[1] == 0))
 	{
 		ft_reset_term(env);
-		ft_show_selection(env);
+		if (env->tch[0] == 10)
+			ft_show_selection(env);
 		exit(0);
 	}
 	else if (env->tch[0] == 127)

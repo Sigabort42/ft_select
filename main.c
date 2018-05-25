@@ -72,10 +72,10 @@ void		ft_signal(void)
 		;
 	if (signal(SIGTERM, ft_signal_kill) == SIG_ERR)
 		;
-	if (signal(SIGUSR1, ft_signal_kill) == SIG_ERR)
-		;
-	if (signal(SIGUSR2, ft_signal_kill) == SIG_ERR)
-		;
+//	if (signal(SIGUSR1, ft_signal_kill) == SIG_ERR)
+//		;
+//	if (signal(SIGUSR2, ft_signal_kill) == SIG_ERR)
+//		;
 }
 
 int			main(int argc, char **argv)
