@@ -12,8 +12,6 @@
 
 #include "./includes/ft_select.h"
 
-//t_env		*env2;
-
 static void	ft_signal_window(int sig)
 {
 	if (sig == SIGWINCH)

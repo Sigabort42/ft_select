@@ -56,7 +56,7 @@ void				ft_show_column2(t_env *env, char *name_node)
 void				ft_show_column(t_env *env, char *name_node)
 {
 	if (env->res < 0 || env->wsize.ws_col - env->size_word_max - 2 < 0 ||
-	env->wsize.ws_row - env->nb_arg - 2 < 0)
+			     env->wsize.ws_row < env->nb_arg / env->div + 2)
 		return ;
 	if (env->res >= env->wsize.ws_col / 2)
 	{
