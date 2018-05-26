@@ -50,9 +50,24 @@ static void	ft_signal_kill(int sig)
 	exit(1);
 }
 
+static void	ft_signal_tstp(int sig)
+{
+	char str[2];
+
+	if (sig == SIGTSTP)
+	{
+		str[0] = 26;
+		str[1] = '\0';
+		signal(SIGTSTP, SIG_DFL);
+		ioctl(2, TIOCSTI, str);
+	}
+}
+
 static void	ft_signal(void)
 {
 	if (signal(SIGWINCH, ft_signal_window) == SIG_ERR)
+		;
+	if (signal(SIGTSTP, ft_signal_tstp) == SIG_ERR)
 		;
 	if (signal(SIGCONT, ft_signal_cont) == SIG_ERR)
 		;
