@@ -12,7 +12,7 @@
 
 #include "./includes/ft_select.h"
 
-t_env		*env2;
+//t_env		*env2;
 
 static void	ft_signal_window(int sig)
 {
@@ -39,7 +39,6 @@ static void	ft_signal_cont(int sig)
 		ft_init_termcap(env2);
 		ft_init_prog(env2);
 		ft_show(env2);
-		ft_run(env2);
 	}
 }
 
@@ -48,19 +47,6 @@ static void	ft_signal_kill(int sig)
 	(void)sig;
 	ft_reset_term(env2);
 	exit(1);
-}
-
-static void	ft_signal_tstp(int sig)
-{
-	char str[2];
-
-	if (sig == SIGTSTP)
-	{
-		str[0] = 26;
-		str[1] = '\0';
-		signal(SIGTSTP, SIG_DFL);
-		ioctl(2, TIOCSTI, str);
-	}
 }
 
 static void	ft_signal(void)

@@ -96,6 +96,7 @@ void		ft_run(t_env *env)
 
 	while (42)
 	{
+		signal(SIGTSTP, ft_signal_tstp);
 		ioctl(0, TIOCGWINSZ, &env->wsize);
 		if ((ret = read(0, env->tch, 3)) < 0)
 			break ;

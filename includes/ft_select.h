@@ -50,6 +50,8 @@ typedef struct		s_env
 	struct s_liste	*last;
 }					t_env;
 
+t_env				*env2;
+
 void				ft_init_liste(t_env *env, char **argv);
 void				ft_init_termcap(t_env *env);
 void				ft_init_prog(t_env *env);
@@ -65,6 +67,7 @@ void				ft_size_word_max(t_env *env);
 void				ft_show_column(t_env *env, char *name_node);
 void				ft_init_calc_write(t_env *env);
 void				ft_show(t_env *env);
+void				ft_signal_tstp(int sig);
 int					ft_count_liste(t_liste *first);
 
 #endif

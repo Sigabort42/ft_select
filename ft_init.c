@@ -57,7 +57,7 @@ void		ft_init_termcap(t_env *env)
 
 void		ft_reset_term(t_env *env)
 {
-	env->tc.c_lflag = (ICANON | ECHO);
+	env->tc.c_lflag |= (ICANON | ECHO);
 	tputs(tgetstr("te", NULL), 1, ft_putchar);
 	tputs(tgetstr("ve", NULL), 1, ft_putchar);
 	tcsetattr(0, 0, &env->tc);

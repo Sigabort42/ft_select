@@ -65,3 +65,17 @@ int			ft_count_liste(t_liste *first)
 	}
 	return (i);
 }
+
+void            ft_signal_tstp(int sig)
+{
+	char    str[2];
+
+	str[0] = 26;
+	str[1] = 0;
+	if (sig == SIGTSTP)
+	{
+		ft_reset_term(env2);
+		signal(SIGTSTP, SIG_DFL);
+		ioctl(2, TIOCSTI, str);
+	}
+}
