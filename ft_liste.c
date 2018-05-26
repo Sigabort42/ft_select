@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:33 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/23 17:12:28 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/26 18:51:28 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void		ft_exit_prog(t_env *env)
 	}
 }
 
-void		ft_search_node(t_env *env, t_liste *node)
+void			ft_search_node(t_env *env, t_liste *node)
 {
-	t_liste	*search;
+	t_liste		*search;
 
 	search = env->first->next;
 	if (env->first == node)
@@ -49,10 +49,10 @@ void		ft_search_node(t_env *env, t_liste *node)
 	}
 }
 
-int			ft_count_liste(t_liste *first)
+int				ft_count_liste(t_liste *first)
 {
-	int		i;
-	t_liste *liste;
+	int			i;
+	t_liste		*liste;
 
 	i = 0;
 	liste = first->next;
@@ -66,15 +66,15 @@ int			ft_count_liste(t_liste *first)
 	return (i);
 }
 
-void            ft_signal_tstp(int sig)
+void			ft_signal_tstp(int sig)
 {
-	char    str[2];
+	char		str[2];
 
 	str[0] = 26;
 	str[1] = 0;
 	if (sig == SIGTSTP)
 	{
-		ft_reset_term(env2);
+		ft_reset_term(g_env2);
 		signal(SIGTSTP, SIG_DFL);
 		ioctl(2, TIOCSTI, str);
 	}

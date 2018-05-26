@@ -6,7 +6,7 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:50:42 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/22 16:25:15 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/26 16:28:56 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ static void	ft_if_tch(t_env *env)
 		env->nb_arg--;
 		ft_press_delete_or_backs(env, env->first);
 	}
-	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66) //bottom
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 66)
 		env->csr_term++;
-	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65) //top
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 65)
 		env->csr_term--;
-	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 67) //right
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 67)
 		env->csr_term += env->nb_arg / env->div + 1;
-	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 68) //left
+	else if (env->tch[0] == 27 && env->tch[1] == 91 && env->tch[2] == 68)
 		env->csr_term -= env->nb_arg / env->div + 1;
 	if (env->csr_term > env->nb_arg)
 		env->csr_term = 0;

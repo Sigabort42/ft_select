@@ -6,14 +6,14 @@
 /*   By: elbenkri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 09:51:04 by elbenkri          #+#    #+#             */
-/*   Updated: 2018/05/22 14:32:28 by elbenkri         ###   ########.fr       */
+/*   Updated: 2018/05/26 17:16:44 by elbenkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
 # include "./../libft/libft.h"
-#include <signal.h>
+# include <signal.h>
 # include <curses.h>
 # include <term.h>
 # include <termios.h>
@@ -50,7 +50,7 @@ typedef struct		s_env
 	struct s_liste	*last;
 }					t_env;
 
-t_env				*env2;
+t_env				*g_env2;
 
 void				ft_init_liste(t_env *env, char **argv);
 void				ft_init_termcap(t_env *env);
