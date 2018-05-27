@@ -29,8 +29,7 @@ void		ft_first(t_env *env)
 
 void		ft_bgc_txt(t_env *env)
 {
-	tputs(tparm(env->bgc, COLOR_WHITE), 1, ft_putchar);
-	tputs(tparm(env->txt, COLOR_BLACK), 1, ft_putchar);
+	tputs(env->bgc, 1, ft_putchar);
 }
 
 void		ft_press_space(t_env *env, t_liste *liste)

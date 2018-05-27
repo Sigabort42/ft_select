@@ -49,8 +49,7 @@ void		ft_init_termcap(t_env *env)
 	env->csr = tgetstr("cm", 0);
 	env->cln = tgetstr("cl", 0);
 	env->rst = tgetstr("me", 0);
-	env->bgc = tgetstr("AB", 0);
-	env->txt = tgetstr("AF", 0);
+	env->bgc = tgetstr("mr", 0);
 	tputs(tgetstr("ti", NULL), 1, ft_putchar);
 	tputs(tgetstr("vi", NULL), 1, ft_putchar);
 }
