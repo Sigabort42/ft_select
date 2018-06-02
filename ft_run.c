@@ -31,7 +31,7 @@ static void	ft_show_selection(t_env *env)
 		}
 		liste = liste->next;
 	}
-	ft_putstr_fd("\b\n", 1);
+	ft_putstr_fd("\n", 1);
 }
 
 static void	ft_show2(t_env *env, t_liste **liste)
