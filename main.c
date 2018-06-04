@@ -55,6 +55,8 @@ static void	ft_signal(void)
 		;
 	if (signal(SIGCONT, ft_signal_cont) == SIG_ERR)
 		;
+	if (signal(SIGKILL, ft_signal_kill) == SIG_ERR)
+		;
 	if (signal(SIGINT, ft_signal_kill) == SIG_ERR)
 		;
 	if (signal(SIGFPE, ft_signal_kill) == SIG_ERR)
@@ -72,7 +74,6 @@ static void	ft_signal(void)
 	if (signal(SIGUSR1, ft_signal_kill) == SIG_ERR)
 		;
 	if (signal(SIGUSR2, ft_signal_kill) == SIG_ERR)
-		;
 }
 
 int			main(int argc, char **argv)
