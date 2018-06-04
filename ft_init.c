@@ -36,7 +36,8 @@ void		ft_init_liste(t_env *env, char **argv)
 void		ft_init_termcap(t_env *env)
 {
 	env->type_term = getenv("TERM");
-	if (tgetent(0, env->type_term) == ERR)
+	if (tgetent(0, env->type_term) == ERR ||
+	ft_strcmp(env->type_term, "xterm-256color"))
 	{
 		env->type_term = ft_strdup("xterm-256color");
 		if (tgetent(0, env->type_term) == ERR)
@@ -50,6 +51,9 @@ void		ft_init_termcap(t_env *env)
 	env->cln = tgetstr("cl", 0);
 	env->rst = tgetstr("me", 0);
 	env->bgc = tgetstr("mr", 0);
+	if (env->slg == 0 || env->csr == 0 || env->cln == 0 || env->rst == 0 ||
+	env->bgc == 0)
+		exit(1);
 	tputs(tgetstr("ti", NULL), 1, ft_putchar);
 	tputs(tgetstr("vi", NULL), 1, ft_putchar);
 }
